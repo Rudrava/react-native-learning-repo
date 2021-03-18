@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Helo this is my first project with @codingwithmosh's tutorial series. This is an app to get rid of things we are done with!!"
   }
 }
