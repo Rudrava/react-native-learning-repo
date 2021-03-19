@@ -1,14 +1,11 @@
+import { useDeviceOrientation, useDimensions } from "@react-native-community/hooks";
 import React from "react";
 import {
+  Dimensions,  
   StyleSheet,
   Text,
   View,
   SafeAreaView,
-  Image,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableNativeFeedback,
   Button,
   Alert,
   Platform,
@@ -16,45 +13,30 @@ import {
 } from "react-native";
 
 export default function App() {
-  const press = e => console.log("pressed")
+  // gives width height scale fontScale of the device but is not reactive to device orientation change 
+  // for which we use orientation hooks or dimension hooks
+  // console.log(Dimensions.get("screen"))
+  // gives the dimensions data wrt to orientation change
+  // console.log(useDimensions())
+  // gives only the orientation details
+  // Object {
+  //   "landscape": false,
+  //   "portrait": true,
+  // }  
+  // const { landscape } = useDeviceOrientation()
   return (
-    // the left side style obj overrides the properties on right
-    <View style={[styles.container, colorOverride]}>
-      {/* <TouchableHighlight onPress={()=> console.log("image Tapped")}>
-        <Image
-          source={{
-          width: 200,
-          height: 300,
-          uri: "https://picsum.photos/200/300"
-        }} />
-      </TouchableHighlight>
-      <TouchableNativeFeedback>
-        <View style={{width: 200, height: 50, backgroundColor:"teal", margin: 20}}></View>
-      </TouchableNativeFeedback>
-      <Text numberOfLines={2} onPress={press}>Hello Android hope u are powerfull as web!!!
-      </Text> */}
-      <Button
-        title="click me"
-        onPress={() =>
-          Alert.alert("you are being alerted",
-            "button pressed",
-            [
-              {
-                text: "yes",
-                onPress: () => console.log("yes pressed")
-              },
-              {
-                text: "No",
-                onPress: () =>  console.log("no pressed")}
-            ])
-          // alert prompt dosent work in android
-          // Alert.prompt("my prompt",
-          //   "button pressed",
-          // text=> console.log(text))
-        }
-        color="teal"
-      />
-    </View>
+    <SafeAreaView style={[styles.container]}>
+      <View
+        style={{
+          backgroundColor: "pink",
+          width: "100%",
+          // height: landscape ? "100%" : "35%",
+          height: "35%",
+        }}>
+        
+        </View>
+      {/* <Text style={{marginTop: "10%",textAlign: "center"}}>{ (landscape ? "landScape" : "potrait")} </Text> */}
+    </SafeAreaView>
   );
 }
 
@@ -63,9 +45,9 @@ const colorOverride = {backgroundColor: "yellow"}
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    justifyContent: "center",
+    // justifyContent: "center",
     // alignItems: "center",
-    // backgroundColor: "#cfecef",
-    paddingTop: (Platform.OS==="android" && StatusBar.currentHeight) 
+    backgroundColor: "#cfecef",
+    paddingTop: (Platform.OS==="android" && StatusBar.currentHeight ) 
   },
 });
