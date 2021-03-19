@@ -1,53 +1,57 @@
 import { useDeviceOrientation, useDimensions } from "@react-native-community/hooks";
 import React from "react";
 import {
-  Dimensions,  
-  StyleSheet,
-  Text,
   View,
-  SafeAreaView,
-  Button,
-  Alert,
-  Platform,
-  StatusBar
 } from "react-native";
 
 export default function App() {
-  // gives width height scale fontScale of the device but is not reactive to device orientation change 
-  // for which we use orientation hooks or dimension hooks
-  // console.log(Dimensions.get("screen"))
-  // gives the dimensions data wrt to orientation change
-  // console.log(useDimensions())
-  // gives only the orientation details
-  // Object {
-  //   "landscape": false,
-  //   "portrait": true,
-  // }  
-  // const { landscape } = useDeviceOrientation()
   return (
-    <SafeAreaView style={[styles.container]}>
       <View
         style={{
-          backgroundColor: "pink",
-          width: "100%",
-          // height: landscape ? "100%" : "35%",
-          height: "35%",
-        }}>
-        
-        </View>
-      {/* <Text style={{marginTop: "10%",textAlign: "center"}}>{ (landscape ? "landScape" : "potrait")} </Text> */}
-    </SafeAreaView>
+          backgroundColor: "#ffc",
+          flex: 1,
+          flexDirection: "row",
+          justifyContent: "center", //main axis allingment
+          // alignContent: "center", //this centers a multiline content as a whole 
+          // flexWrap: "wrap",
+          // on multiline align items behaves as alginent per each line 
+          alignItems: "center", //along secondary axis
+      }}>
+        <View style={{
+          backgroundColor: "dodgerblue",
+          // flexGrow: 1,
+          // flexBasis: 100,
+          // width: 300,
+          // flexShrink: 1,
+          width: 100,
+          height: 100,
+          // alignSelf: "flex-start"
+        }} />
+        <View style={{
+          backgroundColor: "gold",
+          width: 100,
+          height: 100,
+          position: "absolute",
+          top: 30,
+           left: 20
+        }} />
+        <View style={{
+          backgroundColor: "tomato",
+          width: 100,
+          height: 100
+        }} />
+        {/* <View style={{
+          backgroundColor: "grey",
+          width: 100,
+          height: 100
+        }} />
+        <View style={{
+          backgroundColor: "greenyellow",
+          width: 100,
+          height: 100
+        }} /> */}
+      </View>
   );
 }
 
-const colorOverride = {backgroundColor: "yellow"}
 
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    // justifyContent: "center",
-    // alignItems: "center",
-    backgroundColor: "#cfecef",
-    paddingTop: (Platform.OS==="android" && StatusBar.currentHeight ) 
-  },
-});
